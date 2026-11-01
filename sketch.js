@@ -24,7 +24,7 @@ let bgMusic, scoreSound, booSound;
 let startBlur, deadBlur;
 let startMillis = 0;
 
-let buttonEasy, buttonMed, buttonHard, buttonMinus, buttonPlus, buttonStart, buttonRetry;
+let btnEasy, btnMed, btnHard, btnMinus, btnPlus, btnStart, btnRetry;
 
 // loading all before start
 function preload() {
@@ -187,7 +187,7 @@ function drawPlay(){
     textAlign(LEFT, TOP)
     text("SCORE " + score, width * 0.03, height * 0.03);
     textAlign(RIGHT, TOP);
-    text("TIME " + cell(timeLeft), width * 0.97, height * 0.3);
+    text("TIME " + ceil(timeLeft), width * 0.97, height * 0.3);
     textAlign(CENTER, CENTER);
 }
 // game over
@@ -254,7 +254,7 @@ function setDifficulty(){
     if (difficulty === "easy"){
         fallSpeed = min(height, width) * 0.004;
         spawnDelay = 900;
-        spawnChance = 0.14;        
+        evilChance = 0.14;        
     } else if (difficulty === "medium"){
         fallSpeed = min(height, width) * 0.007;
         spawnDelay = 620;
@@ -297,12 +297,19 @@ function resetGame(){
 // handle main menu
 function mousePressed() {
   if (gameState === "start") {
-    if (clickBox(btnEasy)) {
-      difficulty = "easy";
-    } else if (clickBox(btnMed)) {
-      difficulty = "medium";
-    } else if (clickBox(btnHard)) {
-      difficulty = "hard";
+    // if (clickBox(btnEasy)) {
+    //   difficulty = "easy";
+    // } else if (clickBox(btnMed)) {
+    //   difficulty = "medium";
+    // } else if (clickBox(btnHard)) {
+    //   difficulty = "hard";
+    if (btnEasy && clickBox(btnEasy)) {
+  difficulty = "easy";
+} else if (btnMed && clickBox(btnMed)) {
+  difficulty = "medium";
+} else if (btnHard && clickBox(btnHard)) {
+  difficulty = "hard";
+
     } else if (clickBox(btnMinus)) {
       playTime = constrain(playTime - 5, 30, 60);
     } else if (clickBox(btnPlus)) {
