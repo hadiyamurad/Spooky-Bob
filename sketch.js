@@ -117,22 +117,32 @@ function drawStart(){
     image(startBlur, width/2, height/2, width, height);
 
     let panelW = min(460, width * 0.9);
-    let panelH = min(560, height * 0.92);
+    let panelH = min(620, height * 0.92);
     let panelX = width / 2 - panelW / 2;
     let panelY = height / 2 - panelH / 2;
     drawGlassPanel(panelX, panelY, panelW, panelH, color(8, 22, 55, 165));
 
-    image(imgSpong, width / 2, panelY + panelH * 0.16, panelW * 0.28);
+    // image(imgSpong, width / 2, panelY + panelH * 0.16, panelW * 0.28);
+    image(imgSpong, width / 2, panelY + panelH * 0.15, panelW * 0.20, panelH * 0.18);
 
     fill(186, 210, 240);
     textSize(min(width, height) * 0.028);
     text("Which level do you want t play?", width / 2, panelY + panelH * 0.34);
 
-    let bw = panelW * 0.28;
-    let bh = panelH * 0.1;
-    let by = panelY + panelH * 0.4;
-    let gap = panelW * 0.4;
-    let bx = panelX + panelW * 0.06;
+    // let bw = panelW * 0.28;
+    // let bh = panelH * 0.1;
+    // let by = panelY + panelH * 0.4;
+    // let gap = panelW * 0.4;
+    // let bx = panelX + panelW * 0.06;
+    // btnEasy = {x: bx, y: by, w: bw, h: bh};
+    // btnMed = {x: bx + bw + gap, y: by, w: bw, h: bh};
+    // btnHard = {x: bx + (bw + gap) * 2, y: by, w: bw, h: bh};
+    let gap = panelW * 0.025;
+    let bw = (panelW * 0.88 - gap * 2) / 3;
+    let bh = panelH * 0.09;
+    let by = panelY + panelH * 0.40;
+    let bx = width / 2 - (bw * 3 + gap * 2) / 2;
+
     btnEasy = {x: bx, y: by, w: bw, h: bh};
     btnMed = {x: bx + bw + gap, y: by, w: bw, h: bh};
     btnHard = {x: bx + (bw + gap) * 2, y: by, w: bw, h: bh};
@@ -141,10 +151,15 @@ function drawStart(){
     drawButton(btnMed.x, btnMed.y, bw, bh, "Medium", difficulty === "medium");
     drawButton(btnHard.x, btnHard.y, bw, bh, "Hard", difficulty === "hard");
 
+    // let tw = bh;
+    // let ty = panelY + panelH * 0.58;
+    // btnMinus = { x: width / 2 - bw * 0.9, y: ty, w: tw, h: tw};
+    // btnPlus = { x: width / 2 + bw * 0.9 - tw, y: ty, w: tw, h: tw};
     let tw = bh;
-    let ty = panelY + panelH * 0.58;
-    btnMinus = { x: width / 2 - bw * 0.9, y: ty, w: tw, h: tw};
-    btnPlus = { x: width / 2 + bw * 0.9 - tw, y: ty, w: tw, h: tw};
+    let ty = panelY + panelH * 0.57;
+
+    btnMinus = { x: width / 2 - 85, y: ty, w: tw, h: tw};
+    btnPlus = { x: width / 2 + 85 - tw, y: ty, w: tw, h: tw};
     drawButton(btnMinus.x, btnMinus.y, tw, tw, "-", false);
     drawButton(btnPlus.x, btnPlus.y, tw, tw, "+", false);
     fill(186, 210, 240);
@@ -204,7 +219,7 @@ function drawDead(){
   let panelY = height / 2 - panelH / 2;
   drawGlassPanel(panelX, panelY, panelW, panelH, color(36, 150, 55, 175));
 
-  image(imgPumkin, width / 2, panelY + panelH * 0.22, panelW * 0.28, panelW * 0.28);
+  image(imgDead, width / 2, panelY + panelH * 0.22, panelW * 0.28, panelW * 0.28);
 
   fill(220, 255, 220);
   textSize(min(width, height) * 0.04);
